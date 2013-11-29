@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  app.locals.pretty = true;
 }
 
 app.get('/', tasting.list);
@@ -36,7 +37,10 @@ app.get('/tastings', tasting.list);
 app.post('/tastings', tasting.create);
 app.get('/tasting/:id', tasting.show);
 
+app.get("/wines", wine.list);
 app.get("/wines/new", wine.new);
+app.post("/wines", wine.create);
+app.get("/wine/:id", wine.show);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

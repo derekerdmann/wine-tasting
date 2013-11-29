@@ -8,7 +8,8 @@ function Wine() {
     this.name = "";
     this.vintage = "";
     this.grape = "";
-    this.price = 0;
+    this.price = "";
+    this.abv = "";
 }
 
 var wines = {}
@@ -17,7 +18,7 @@ var wines = {}
  * GET list of wines
  */
 exports.list = function(req, res){
-  res.render('wines', { title: 'Wines', wines: wines });
+  res.render('wines/wines', { title: 'Wines', wines: wines });
 };
 
 /*
@@ -25,4 +26,20 @@ exports.list = function(req, res){
  */
 exports.new = function(req, res){
   res.render('wines/new', { title: 'Add a wine' });
+};
+
+/*
+ * POST form to add a wine
+ */
+exports.create = function(req, res){
+    var wine = new Wine();
+    wine.name = req.body.name
+    wine.winery = req.body.winery
+    wine.grape = req.body.grape
+    wine.vintage = req.body.vintage
+    wine.price = req.body.price
+    wine.abv = req.body.abv
+
+    wines[wine.id] = wine;
+    res.render('wines/wines', { title: 'Wine list', wines: wines });
 };
