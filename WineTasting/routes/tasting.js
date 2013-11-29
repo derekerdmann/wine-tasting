@@ -1,9 +1,16 @@
-﻿
+﻿// ID of the next tasting to be created
+var tastingID = 1;
+
+// Construct a tasting object
+function Tasting( name ) {
+    this.id = tastingID++;
+    this.name = name;
+    this.users = []
+    this.wines = []
+}
+
 // Currently active tastings
 var tastings = {}
-
-// ID of the next tasting to be created
-var tastingID = 1;
 
 /*
  * GET list of tastings
@@ -16,11 +23,8 @@ exports.list = function(req, res){
  * POST list of tastings
  */
 exports.create = function(req, res){
-    var id = tastingID++;
-    tastings[id] = {
-        id: id,
-        name: req.body.name,
-    };
+    var tasting = new Tasting(req.body.name);
+    tastings[tasting.id] = tasting;
     res.render('tastings', { title: 'Tastings', tastings: tastings });
 };
 
