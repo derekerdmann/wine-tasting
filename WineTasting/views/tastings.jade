@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+
+    ul
+      each tasting in tastings
+        li
+          a(href="/tasting/" + tasting.id)= tasting.name
+
+    form(method="POST", action="tastings")
+        
+      fieldset
+        legend Create a tasting
+
+        label(for="name") Name
+        input(type="text", id="name", name="name")
+
+        input(type="submit")
+                
