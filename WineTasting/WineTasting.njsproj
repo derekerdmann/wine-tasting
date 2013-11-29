@@ -30,27 +30,58 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="routes\index.js" />
+    <Compile Include="public\js\foundation.min.js" />
+    <Compile Include="public\js\foundation\foundation.abide.js" />
+    <Compile Include="public\js\foundation\foundation.accordion.js" />
+    <Compile Include="public\js\foundation\foundation.alert.js" />
+    <Compile Include="public\js\foundation\foundation.clearing.js" />
+    <Compile Include="public\js\foundation\foundation.dropdown.js" />
+    <Compile Include="public\js\foundation\foundation.interchange.js" />
+    <Compile Include="public\js\foundation\foundation.joyride.js" />
+    <Compile Include="public\js\foundation\foundation.js" />
+    <Compile Include="public\js\foundation\foundation.magellan.js" />
+    <Compile Include="public\js\foundation\foundation.offcanvas.js" />
+    <Compile Include="public\js\foundation\foundation.orbit.js" />
+    <Compile Include="public\js\foundation\foundation.reveal.js" />
+    <Compile Include="public\js\foundation\foundation.tab.js" />
+    <Compile Include="public\js\foundation\foundation.tooltip.js" />
+    <Compile Include="public\js\foundation\foundation.topbar.js" />
+    <Compile Include="public\js\jquery.js" />
+    <Compile Include="public\js\modernizr.js" />
+    <Compile Include="public\js\vendor\custom.modernizr.js" />
+    <Compile Include="public\js\vendor\fastclick.js" />
+    <Compile Include="public\js\vendor\jquery.autocomplete.js" />
+    <Compile Include="public\js\vendor\jquery.cookie.js" />
+    <Compile Include="public\js\vendor\jquery.js" />
+    <Compile Include="public\js\vendor\placeholder.js" />
     <Compile Include="routes\tasting.js" />
     <Compile Include="routes\user.js" />
+    <Compile Include="routes\wine.js" />
     <Content Include="package.json" />
-    <Content Include="public\stylesheets\style.styl" />
+    <Content Include="public\css\foundation.css" />
+    <Content Include="public\css\foundation.min.css" />
+    <Content Include="public\css\normalize.css" />
+    <Content Include="public\img\.gitkeep" />
     <Content Include="README.md" />
     <Content Include="views\tasting.jade" />
     <Content Include="views\tastings.jade" />
-    <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="public\" />
-    <Folder Include="public\images\" />
-    <Folder Include="public\javascripts\" />
-    <Folder Include="public\stylesheets\" />
+    <Folder Include="public\css\" />
+    <Folder Include="public\img\" />
+    <Folder Include="public\js\" />
+    <Folder Include="public\js\foundation\" />
+    <Folder Include="public\js\vendor\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
+    <Folder Include="views\wines\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="views\wines\new.jade" />
+    <Content Include="views\wines\wines.jade" />
     <Content Include="Web.config" />
     <Content Include="Web.cloud.config" />
     <Content Include="bin\ChangeConfig.ps1" />
