@@ -43,3 +43,11 @@ exports.create = function(req, res){
     wines[wine.id] = wine;
     res.render('wines/wines', { title: 'Wine list', wines: wines });
 };
+
+/*
+ * GET individual wine
+ */
+exports.show = function(req, res){
+    var wine = wines[req.params.id];
+    res.render('wines/show', { title: wine.name });
+};

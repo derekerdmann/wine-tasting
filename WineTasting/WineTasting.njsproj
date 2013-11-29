@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="views\wines\new.jade" />
+    <Content Include="views\wines\show.jade" />
     <Content Include="views\wines\wines.jade" />
     <Content Include="Web.config" />
     <Content Include="Web.cloud.config" />
