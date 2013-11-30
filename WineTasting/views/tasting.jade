@@ -1,4 +1,28 @@
 extends layout
 
 block content
-  h1= title
+  h1= tasting.name
+
+  table.large-12.columns
+    tr.row
+      th.large-2.columns Wine
+      th.large-2.columns See
+      th.large-2.columns Smell
+      th.large-2.columns Swirl
+      th.large-2.columns Sip
+      th.large-2.columns Savor
+    each wine in tasting.wines
+      tr.row
+        td.large-2.columns= wine.prettyName()
+        td.large-2.columns
+        td.large-2.columns
+        td.large-2.columns
+        td.large-2.columns
+        td.large-2.columns
+  
+  a(href="#")#add-wine.button Add wine
+  form(method="post", action="/tasting/" + tasting.id)
+    select(name="newwine", id="newwine")
+      each wine in wines
+        option(value=wine.id)= wine.prettyName()
+    input(type="submit", value="Add").button

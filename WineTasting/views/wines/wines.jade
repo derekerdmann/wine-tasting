@@ -3,7 +3,10 @@ extends ../layout
 block content
   h1= title
 
-  ul
+  ul.row
     each wine in wines
       li
         a(href="/wine/" + wine.id)= wine.name
+
+  div.row
+    a(href="/wines/new").button Add a wine

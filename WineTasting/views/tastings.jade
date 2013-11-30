@@ -2,7 +2,6 @@ extends layout
 
 block content
     h1= title
-    p Welcome to #{title}
 
     ul
       each tasting in tastings
@@ -17,5 +16,5 @@ block content
         label(for="name") Name
         input(type="text", id="name", name="name")
 
-        input(type="submit")
+        input(type="submit", value="Create").button
                 

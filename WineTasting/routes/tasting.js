@@ -1,4 +1,6 @@
-﻿// ID of the next tasting to be created
+﻿var wines = require("./wine.js")
+
+// ID of the next tasting to be created
 var tastingID = 1;
 
 // Construct a tasting object
@@ -32,6 +34,23 @@ exports.create = function(req, res){
  * GET individual tasting
  */
 exports.show = function(req, res){
-    var tasting = tastings[req.params.id];
-    res.render('tasting', { title: tasting.name });
+    var tasting = tastings[+req.params.id];
+    res.render('tasting', {
+        title: tasting.name,
+        tasting: tasting,
+        wines: wines.all()
+    });
+};
+
+/*
+ * POST changes to individual tasting
+ */
+exports.update = function(req, res){
+    var tasting = tastings[+req.params.id];
+    tasting.wines.push(wines.get(+req.body.newwine));
+    res.render('tasting', {
+        title: tasting.name,
+        tasting: tasting,
+        wines: wines.all()
+    });
 };

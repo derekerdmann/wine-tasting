@@ -12,7 +12,22 @@ function Wine() {
     this.abv = "";
 }
 
+Wine.prototype.prettyName = function() {
+    return (this.winery + " " + this.name).trim();
+};
+
 var wines = {}
+
+// Returns all the wines
+exports.all = function() {
+    return wines;
+}
+
+
+// Returns all the wines
+exports.get = function(id) {
+    return wines[id];
+}
 
 /*
  * GET list of wines
@@ -51,3 +66,4 @@ exports.show = function(req, res){
     var wine = wines[req.params.id];
     res.render('wines/show', { title: wine.name });
 };
+

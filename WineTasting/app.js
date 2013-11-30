@@ -36,6 +36,7 @@ app.get('/users', user.list);
 app.get('/tastings', tasting.list);
 app.post('/tastings', tasting.create);
 app.get('/tasting/:id', tasting.show);
+app.post('/tasting/:id', tasting.update);
 
 app.get("/wines", wine.list);
 app.get("/wines/new", wine.new);
