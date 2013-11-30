@@ -1,0 +1,9 @@
+﻿.tasting-sheet td {
+    padding-bottom: 2em;
+}
+
+.descriptor {
+    position: relative;
+    top: 2em; left: 0;
+    border: 1px solid #ccc;
+}

@@ -58,6 +58,7 @@
     <Compile Include="routes\user.js" />
     <Compile Include="routes\wine.js" />
     <Content Include="package.json" />
+    <Content Include="public\css\app.css" />
     <Content Include="public\css\foundation.css" />
     <Content Include="public\css\foundation.min.css" />
     <Content Include="public\css\normalize.css" />

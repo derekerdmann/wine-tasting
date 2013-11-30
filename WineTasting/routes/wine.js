@@ -12,6 +12,7 @@ function Wine() {
     this.abv = "";
 }
 
+// displays the wine name nicely
 Wine.prototype.prettyName = function() {
     return (this.winery + " " + this.name).trim();
 };
