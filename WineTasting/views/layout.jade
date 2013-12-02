@@ -12,6 +12,16 @@ html(class="no-js", lang="en")
     script(src="/js/vendor/custom.modernizr.js")
 
   body.large-9.large-centered.columns
+
+    header.row
+      span.large-3.columns Wine Tasting
+      div.user.large-6.columns
+        - if( user ) {
+            p= user.name
+        - } else {
+            a(href="/users/new") Sign in
+        - }
+
     block content
 
     script(src="/js/vendor/jquery.js")

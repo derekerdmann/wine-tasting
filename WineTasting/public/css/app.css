@@ -7,3 +7,9 @@
     top: 2em; left: 0;
     border: 1px solid #ccc;
 }
+
+.colors .color {
+    width: 2em; height: 1em;
+    display: inline-block;
+    text-indent: -99999px;
+}

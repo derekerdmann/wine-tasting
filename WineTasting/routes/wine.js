@@ -34,14 +34,21 @@ exports.get = function(id) {
  * GET list of wines
  */
 exports.list = function(req, res){
-  res.render('wines/wines', { title: 'Wines', wines: wines });
+  res.render('wines/wines', {
+      user: req.session.user,
+      title: 'Wines',
+      wines: wines
+  });
 };
 
 /*
  * GET form to add a wine
  */
 exports.new = function(req, res){
-  res.render('wines/new', { title: 'Add a wine' });
+  res.render('wines/new', {
+      user: req.session.user,
+      title: 'Add a wine'
+  });
 };
 
 /*
@@ -65,6 +72,9 @@ exports.create = function(req, res){
  */
 exports.show = function(req, res){
     var wine = wines[req.params.id];
-    res.render('wines/show', { title: wine.name });
+    res.render('wines/show', {
+        user: req.session.user,
+        title: wine.name
+    });
 };
 

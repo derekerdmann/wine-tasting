@@ -1,0 +1,25 @@
+﻿extends ../layout
+
+block content
+  div.large-9.columns.large-centered
+    h1 Join the tasting
+
+    form(method="POST", action="/users/new")
+        
+      fieldset
+        legend Your information
+
+        div.large-12.columns
+          label(for="name") User name
+          input(type="text", id="user", name="name")
+
+        div.large-12.columns.colors
+          label Pick a color for your comments:
+          - for( var i = 0; i < colors.length; ++ i ) {
+          - var color = colors[i]
+            input(type="radio", id="color-" + i, name="color", value=color)
+            label(for="color-" + i, style="background:" + color + ";color:" + color).color= color
+          - }
+
+        div.large-12.columns
+          input(type="submit", value="Join").button

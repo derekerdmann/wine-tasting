@@ -78,9 +78,11 @@
     <Folder Include="public\js\vendor\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
+    <Folder Include="views\users\" />
     <Folder Include="views\wines\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="views\users\new.jade" />
     <Content Include="views\wines\new.jade" />
     <Content Include="views\wines\show.jade" />
     <Content Include="views\wines\wines.jade" />

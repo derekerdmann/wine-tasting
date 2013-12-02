@@ -18,7 +18,10 @@ var tastings = {}
  * GET list of tastings
  */
 exports.list = function(req, res){
-  res.render('tastings', { title: 'Tastings', tastings: tastings });
+    res.render('tastings', {
+        title: 'Tastings',
+        tastings: tastings
+    });
 };
 
 /*
@@ -27,7 +30,10 @@ exports.list = function(req, res){
 exports.create = function(req, res){
     var tasting = new Tasting(req.body.name);
     tastings[tasting.id] = tasting;
-    res.render('tastings', { title: 'Tastings', tastings: tastings });
+    res.render('tastings', { 
+        title: 'Tastings',
+        tastings: tastings
+    });
 };
 
 /*
@@ -48,9 +54,5 @@ exports.show = function(req, res){
 exports.update = function(req, res){
     var tasting = tastings[+req.params.id];
     tasting.wines.push(wines.get(+req.body.newwine));
-    res.render('tasting', {
-        title: tasting.name,
-        tasting: tasting,
-        wines: wines.all()
-    });
+    res.redirect(303, "/tasting/" + req.params.id);
 };
