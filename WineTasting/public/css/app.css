@@ -1,5 +1,6 @@
 ﻿.tasting-sheet td {
     padding-bottom: 2em;
+    vertical-align: bottom;
 }
 
 .descriptor {
@@ -19,7 +20,6 @@
     display: inline-block;
     margin-right: 0.5em;
 }
-
 
 .comment {
     color: #fff;

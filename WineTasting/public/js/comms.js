@@ -51,6 +51,8 @@
                     message: input.value,
                     user: user
                 });
+
+                event.target.value = "";
             }
         });
     }
