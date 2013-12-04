@@ -3,6 +3,8 @@
  * Module dependencies.
  */
 
+var SITE_SECRET = "this is a very secret key";
+
 var express = require('express');
 var user = require('./routes/user');
 var tasting = require('./routes/tasting');
@@ -23,8 +25,15 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 
+var MemoryStore = express.session.MemoryStore;
+var sessionStore = new MemoryStore();
+
 app.use(express.cookieParser());
-app.use(express.session({secret: '1234567890QWERTYUIOP'}));
+app.use(express.session({
+    secret: SITE_SECRET,
+    key: "express.sid",
+    store: sessionStore,
+}));
 
 app.use(function (req, res, next) {
     res.locals.user = req.session.user;
@@ -56,6 +65,11 @@ app.get("/users/new", user.new);
 app.post("/users/new", user.create);
 app.get("/users/logout", user.logout);
 
+function parseSignedSessionId(cookie) {
+    var end = cookie.indexOf(".");
+    return cookie.substr(2, end-2);
+}
+
 var server = http.createServer(app);
 
 server.listen(app.get('port'), function(){
@@ -63,4 +77,31 @@ server.listen(app.get('port'), function(){
 });
 
 var io = require('socket.io').listen(server);
+var cookie = require('cookie');
+
+io.set('authorization', function (data, accept) {
+
+    if (data.headers.cookie) {
+        data.cookie = cookie.parse(data.headers.cookie);
+        data.sessionID = parseSignedSessionId(data.cookie['express.sid']);
+
+        sessionStore.get(data.sessionID, function (err, session) {
+            if( err ) {
+                return accept("Error: " + err, false);
+            } else if (!session) {
+                // if we cannot grab a session, turn down the connection
+                return accept('Error', false);
+            } else {
+                // save the session data and accept the connection
+                data.session = session;
+                return accept(null, true);
+            }
+        });
+
+    } else {
+       return accept('No cookie transmitted.', false);
+    }
+});
+
+
 comm.start(io);

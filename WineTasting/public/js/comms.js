@@ -2,6 +2,11 @@
 
     // Set up initial websocket connection
     var socket = io.connect('/');
+    var user = null;
+
+    socket.on("connected", function(data) {
+        user = data;
+    });
 
     socket.on("comment", function(data) {
         console.log("Received comment: " + JSON.stringify(data));
@@ -15,8 +20,10 @@
                     var description = wines[i].children[j].children[0];
                     if( description.dataset.type == data.type ) {
                         var comment = document.createElement("span")
-                        comment.classList += "comment";
+                        comment.classList.add("comment");
+                        comment.classList.add("label");
                         comment.textContent = data.message;
+                        comment.style.backgroundColor = data.user.color;
                         description.insertBefore(comment, description.children[0]);
                     }
                 } 
@@ -42,6 +49,7 @@
                     type: type,
                     wine: wineId,
                     message: input.value,
+                    user: user
                 });
             }
         });

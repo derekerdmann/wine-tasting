@@ -2,17 +2,22 @@
 
 exports.start = function(io) {
   io.sockets.on('connection', function (socket) {
-    socket.emit('connected');
 
-    // Save socket
-    var id = socket.id;
-    console.log("socket " + id + " connected");
-    sockets[id] = socket;
+      var user = socket.handshake.session.user;
 
-    socket.on('comment', function (data) {
-        console.log("comment: " + data);
-        socket.emit("comment", data);
-    });
+      socket.emit('connected', user);
+
+      // Save socket
+      var id = socket.id;
+      console.log("socket " + id + " connected");
+      sockets[id] = socket;
+
+      socket.on('comment', function (data) {
+          for( var s in sockets ) {
+              console.log("comment: " + data);
+              sockets[s].emit("comment", data);
+          }
+      });
 
   });
 }

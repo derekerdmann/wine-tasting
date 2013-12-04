@@ -17,19 +17,29 @@ block content
             a(href="/wine/" + wine.id)= wine.prettyName()
         td.large-2.columns
           div(data-type="see").descriptions
+          - if( user ) {
           input(type="text").descriptor
+          - }
         td.large-2.columns
           div(data-type="smell").descriptions
+          - if( user ) {
           input(type="text").descriptor
+          - }
         td.large-2.columns
           div(data-type="swirl").descriptions
+          - if( user ) {
           input(type="text").descriptor
+          - }
         td.large-2.columns
           div(data-type="sip").descriptions
+          - if( user ) {
           input(type="text").descriptor
+          - }
         td.large-2.columns
           div(data-type="savor").descriptions
+          - if( user ) {
           input(type="text").descriptor
+          - }
   
   a(href="#")#add-wine.button Add wine
   form(method="post", action="/tasting/" + tasting.id)
