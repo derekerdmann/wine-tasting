@@ -16,19 +16,19 @@ block content
         td.large-2.columns
             a(href="/wine/" + wine.id)= wine.prettyName()
         td.large-2.columns
-          div.descriptions.see
+          div(data-type="see").descriptions
           input(type="text").descriptor
         td.large-2.columns
-          div.descriptions.smell
+          div(data-type="smell").descriptions
           input(type="text").descriptor
         td.large-2.columns
-          div.descriptions.swirl
+          div(data-type="swirl").descriptions
           input(type="text").descriptor
         td.large-2.columns
-          div.descriptions.sip
+          div(data-type="sip").descriptions
           input(type="text").descriptor
         td.large-2.columns
-          div.descriptions.savor
+          div(data-type="savor").descriptions
           input(type="text").descriptor
   
   a(href="#")#add-wine.button Add wine
