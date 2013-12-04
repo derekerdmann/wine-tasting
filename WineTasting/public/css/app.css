@@ -13,3 +13,9 @@
     display: inline-block;
     text-indent: -99999px;
 }
+
+.swatch {
+    width: 1em; height: 1em;
+    display: inline-block;
+    margin-right: 0.5em;
+}

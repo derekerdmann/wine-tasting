@@ -11,18 +11,32 @@ html(class="no-js", lang="en")
 
     script(src="/js/vendor/custom.modernizr.js")
 
-  body.large-9.large-centered.columns
+  body
 
-    header.row
-      span.large-3.columns Wine Tasting
-      div.user.large-6.columns
-        - if( user ) {
-            p= user.name
-        - } else {
-            a(href="/users/new") Sign in
-        - }
+    div.contain-to-grid
+      nav(data-topbar).top-bar
+        ul.title-area
+          li.name
+            h1
+              a(href="/") Tastings
+        section.top-bar-section
+          ul.left
+            li
+              a(href="wines") Wines
 
-    block content
+        section.top-bar-section
+          div.right
+            div.user
+              - if( user ) {
+                div(style="background:" + user.color).swatch
+                a(href="#")= user.name
+              - } else {
+                a(href="/users/new") Sign in
+              - }
+
+    div.large-9.large-centered.columns
+
+      block content
 
     script(src="/js/vendor/jquery.js")
     script(src="/js/foundation.min.js")
