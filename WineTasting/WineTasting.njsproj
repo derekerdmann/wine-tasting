@@ -30,6 +30,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="comm.js" />
+    <Compile Include="public\js\comms.js" />
     <Compile Include="public\js\foundation.min.js" />
     <Compile Include="public\js\foundation\foundation.abide.js" />
     <Compile Include="public\js\foundation\foundation.accordion.js" />

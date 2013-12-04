@@ -9,6 +9,7 @@ var tasting = require('./routes/tasting');
 var wine = require('./routes/wine');
 var http = require('http');
 var path = require('path');
+var comm = require('./comm');
 
 var app = express();
 
@@ -55,6 +56,11 @@ app.get("/users/new", user.new);
 app.post("/users/new", user.create);
 app.get("/users/logout", user.logout);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+var io = require('socket.io').listen(server);
+comm.start(io);
