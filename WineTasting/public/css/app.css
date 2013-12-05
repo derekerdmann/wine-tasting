@@ -1,11 +1,8 @@
 ﻿.tasting-sheet td {
-    padding-bottom: 2em;
     vertical-align: bottom;
 }
 
 .descriptor {
-    position: relative;
-    top: 2em; left: 0;
     border: 1px solid #ccc;
 }
 
@@ -23,4 +20,10 @@
 
 .comment {
     color: #fff;
+}
+
+.label {
+    margin-right: 0.1em;
+    margin-bottom: 0.1em;
+    white-space: normal;
 }

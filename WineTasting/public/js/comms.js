@@ -16,8 +16,8 @@
             if( wines[i].dataset.wine == data.wine ) {
 
                 // Find the right type
-                for(var j = 0, tlen = wines[i].children.length; j < tlen; ++j ) {
-                    var description = wines[i].children[j].children[0];
+                for(var j = 1, tlen = wines[i].children.length; j < tlen; ++j ) {
+                    var description = wines[i].children[j].children[1];
                     if( description.dataset.type == data.type ) {
                         var comment = document.createElement("span")
                         comment.classList.add("comment");
@@ -42,7 +42,7 @@
             // Make sure it was the enter key
             if( event.keyCode == 13 || event.which == 13 ) {
                 var input = event.target;
-                var type = input.previousElementSibling.dataset.type;
+                var type = input.nextElementSibling.dataset.type;
                 var wineId = input.parentNode.parentNode.dataset.wine;
 
                 socket.emit("comment", { 
