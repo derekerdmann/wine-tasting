@@ -3,6 +3,12 @@ extends layout
 block content
   h1= tasting.name
 
+  if !user
+    div(data-alert).alert-box.alert.radius
+      | Please 
+      a(href="/users/new") sign in
+      |  before viewing or adding comments to the tasting
+
   table.large-12.columns
     tr.row
       th.large-2.columns Wine
@@ -14,36 +20,43 @@ block content
     each wine in tasting.wines
       tr(data-wine=wine.id).row.tasting-sheet
         td.large-2.columns
-            a(href="/wine/" + wine.id)= wine.prettyName()
+            b= wine.prettyName()
+            dl.wine-description
+              unless wine.vintage === ""
+                dt Vintage
+                dd= wine.vintage
+              unless wine.grape === ""
+                dt Grape
+                dd= wine.grape
+              unless wine.abv === ""
+                dt ABV
+                dd= wine.abv
+              unless wine.price === ""
+                dt Price
+                dd= wine.price
         td.large-2.columns
-          - if( user ) {
-          input(type="text").descriptor
-          - }
+          if user
+            input(type="text").descriptor
           div(data-type="see").descriptions
         td.large-2.columns
-          - if( user ) {
-          input(type="text").descriptor
-          - }
+          if user
+            input(type="text").descriptor
           div(data-type="smell").descriptions
         td.large-2.columns
-          - if( user ) {
-          input(type="text").descriptor
-          - }
+          if user
+            input(type="text").descriptor
           div(data-type="swirl").descriptions
         td.large-2.columns
-          - if( user ) {
-          input(type="text").descriptor
-          - }
+          if user
+            input(type="text").descriptor
           div(data-type="sip").descriptions
         td.large-2.columns
-          - if( user ) {
-          input(type="text").descriptor
-          - }
+          if user
+            input(type="text").descriptor
           div(data-type="savor").descriptions
   
-  a(href="#")#add-wine.button Add wine
   form(method="post", action="/tasting/" + tasting.id)
     select(name="newwine", id="newwine")
       each wine in wines
         option(value=wine.id)= wine.prettyName()
-    input(type="submit", value="Add").button
+    input(type="submit", value="Add selected wine").button

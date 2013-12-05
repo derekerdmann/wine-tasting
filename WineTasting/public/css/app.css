@@ -1,8 +1,4 @@
-﻿.tasting-sheet td {
-    vertical-align: bottom;
-}
-
-.descriptor {
+﻿.descriptor {
     border: 1px solid #ccc;
 }
 
@@ -22,8 +18,29 @@
     color: #fff;
 }
 
-.label {
+.descriptions .label {
     margin-right: 0.1em;
     margin-bottom: 0.1em;
     white-space: normal;
+    border-bottom: none;
+}
+
+.wine-description {
+    margin-top: 0.3rem;
+    font-size: 0.9em;
+}
+
+.wine-description dt {
+    font-weight: normal;
+    float: left;
+    margin-right: 0.2em;
+}
+
+.wine-description dt::after {
+    content: ":";
+}
+
+.wine-description dd {
+    font-style: italic;
+    margin-bottom: 0.3rem;
 }

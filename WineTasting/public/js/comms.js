@@ -4,12 +4,20 @@
     var socket = io.connect('/');
     var user = null;
 
+    var pathArray = window.location.pathname.split( '/' );
+    if( pathArray.length > 0 ) {
+        var tastingId = pathArray[pathArray.length - 1];
+    }
+
     socket.on("connected", function(data) {
         user = data;
     });
 
     socket.on("comment", function(data) {
         console.log("Received comment: " + JSON.stringify(data));
+
+        // Make sure this is for the right tasting
+        if( data.tastingId != tastingId ) { return; }
 
         var wines = document.getElementsByClassName("tasting-sheet");
         for( var i = 0, len = wines.length; i < len; ++i ) {
@@ -24,6 +32,7 @@
                         comment.classList.add("label");
                         comment.textContent = data.message;
                         comment.style.backgroundColor = data.user.color;
+                        comment.setAttribute("title", data.user.name);
                         description.insertBefore(comment, description.children[0]);
                     }
                 } 
@@ -49,7 +58,8 @@
                     type: type,
                     wine: wineId,
                     message: input.value,
-                    user: user
+                    user: user,
+                    tastingId: tastingId
                 });
 
                 event.target.value = "";
