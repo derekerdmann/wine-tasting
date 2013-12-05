@@ -60,3 +60,6 @@ block content
       each wine in wines
         option(value=wine.id)= wine.prettyName()
     input(type="submit", value="Add selected wine").button
+
+    p
+      a(href="/wines/new").button Create a new wine

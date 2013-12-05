@@ -64,7 +64,7 @@ exports.create = function(req, res){
     wine.abv = req.body.abv
 
     wines[wine.id] = wine;
-    res.render('wines/wines', { title: 'Wine list', wines: wines });
+    res.redirect(303, "/tastings");
 };
 
 /*
